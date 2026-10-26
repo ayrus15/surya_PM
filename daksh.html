@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gated — Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<script>if('scrollRestoration' in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
+</head>
+<body>
+
+<header class="top"><div class="wrap top-inner">
+  <a class="brand" href="index.html">SURYA VAMSHI S.</a>
+  <nav><a href="index.html#case">All case studies</a><a href="index.html#contact">Contact</a></nav>
+</div></header>
+
+<main class="wrap">
+  <a class="back" href="index.html">← Back to all work</a>
+
+  <section class="detail-hero cover" style="border-radius:20px;padding-inline:28px;border-bottom:none;margin-top:20px">
+    <span class="eyebrow mono" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Second case study</span>
+    <h1 style="font-size:clamp(30px,5vw,46px)">Gated — A Smart Visitor Management System</h1>
+    <p class="lede" style="font-size:17px;max-width:68ch;color:var(--muted)">Built for Christ University's DAKSH / Open Day (December 2–3, 2025), its annual education fair in Bengaluru — replacing a manual, Excel-and-Google-Forms visitor process with QR verification, volunteer tracking, and live analytics.</p>
+    <div class="meta-row">
+      <span>Stack: React · Node.js · Supabase · Recharts · Vercel</span>
+      <span>December 2–3, 2025</span>
+    </div>
+  </section>
+
+  <div class="panel statuspanel" style="margin-top:28px">
+    <div class="head"><span class="dot"></span> DEPLOYED · USED LIVE ACROSS DAKSH / OPEN DAY, DEC 2–3, 2025</div>
+    <div class="statgrid">
+      <div class="stat"><span class="n">~1,500</span><span class="l">Total footfall, 2 days</span></div>
+      <div class="stat"><span class="n">&lt;1 min</span><span class="l">Entry processing</span></div>
+      <div class="stat"><span class="n">~50</span><span class="l">Volunteers involved</span></div>
+    </div>
+    <div class="caveat">Figures are recollections from the event, not independently audited metrics. ~1,500 is total footfall including accompanying people, not registered prospective students alone.</div>
+  </div>
+
+  <section class="block">
+    <div class="tag">Context</div>
+    <h2>Introducing prospective students to the university</h2>
+    <p>DAKSH / Open Day is Christ University's annual educational fair in Bengaluru, introducing prospective Class 11/12 students and their families to the university's courses, campus, and educational offering — combining course inquiry with campus tours and substantial visitor footfall.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">The problem</div>
+    <h2>Lived firsthand, as a volunteer</h2>
+    <p>During my first year participating, I worked as a volunteer and experienced the manual visitor-management process directly. Participants registered through Google Forms, arrived with email confirmations, and were checked against Excel lists by hand. Volunteers then coordinated visitor groups and tour assignments manually.</p>
+    <ul>
+      <li>Entry verification required volunteers to manually locate and validate participant records.</li>
+      <li>Organizers had limited structured visibility into which volunteers took which groups, and how many tours they completed.</li>
+      <li>Event data lived in spreadsheets, making real-time footfall and course-interest analysis difficult.</li>
+      <li>Manual records left room for inconsistent reporting.</li>
+    </ul>
+    <p class="muted" style="font-style:italic">The problem was discovered through conversations with volunteers and organizers, combined with first-hand observation — not a formal research study.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">Solution</div>
+    <h2>Pitched to the university IT department as a finished idea</h2>
+    <p>After experiencing the process as a volunteer, I co-developed Gated and pitched it to the university IT department for use at the event. The idea originated with us; IT reviewed, tested, and requested changes — as a stakeholder, not as the builder.</p>
+
+    <figure class="diagram-frame">
+      <svg viewBox="0 0 700 150" role="img" aria-label="Registration to QR check-in to volunteer allocation to dashboard">
+        <defs><marker id="arrd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--border)"/></marker></defs>
+        <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--fg)">
+          <rect x="20" y="50" width="140" height="50" rx="8" fill="none" stroke="var(--border)" stroke-width="1.25"/>
+          <text x="90" y="80" text-anchor="middle">Registration</text>
+          <rect x="195" y="50" width="140" height="50" rx="8" fill="var(--accent)" fill-opacity="0.12" stroke="var(--accent)" stroke-width="2"/>
+          <text x="265" y="80" text-anchor="middle">QR check-in</text>
+          <rect x="370" y="50" width="150" height="50" rx="8" fill="none" stroke="var(--border)" stroke-width="1.25"/>
+          <text x="445" y="73" text-anchor="middle">Volunteer</text>
+          <text x="445" y="87" text-anchor="middle" font-size="9.5" fill="var(--muted)">allocation + tour tracking</text>
+          <rect x="555" y="50" width="125" height="50" rx="8" fill="none" stroke="var(--border)" stroke-width="1.25"/>
+          <text x="617" y="80" text-anchor="middle">Dashboard</text>
+          <line x1="160" y1="75" x2="193" y2="75" stroke="var(--border)" stroke-width="1.25" marker-end="url(#arrd)"/>
+          <line x1="335" y1="75" x2="368" y2="75" stroke="var(--border)" stroke-width="1.25" marker-end="url(#arrd)"/>
+          <line x1="520" y1="75" x2="553" y2="75" stroke="var(--border)" stroke-width="1.25" marker-end="url(#arrd)"/>
+        </g>
+      </svg>
+      <figcaption>Each scan replaced a manual Excel lookup; timestamps fed straight into the organizer dashboard</figcaption>
+    </figure>
+
+    <h3>Registration &amp; QR verification</h3>
+    <p>Participants registered through a link shared in invitation emails and on event posters, capturing name, phone, email, and course of interest. Submission auto-generated a QR code tied to a unique participant ID. At the entrance, volunteers used scanning devices or phones — a scan retrieved registered details including course interest and accompanying-person information, flagged invalid registrations, and replaced manual Excel searching entirely.</p>
+    <p>Duplicate scans were prevented at the source: each QR code carried a unique ID, and the moment it was scanned, that ID was marked as checked in. A second scan of the same code was recognized immediately rather than creating a duplicate entry.</p>
+
+    <h3>Volunteer allocation &amp; tour tracking</h3>
+    <p>Participants were assigned to an available volunteer (target group size: 15 participants per volunteer). Each volunteer was identified by university register number, letting the system associate participants with the responsible volunteer and retain tour activity records — timestamps captured automatically, so administrators could review tours completed per volunteer across the two-day event.</p>
+
+    <h3>Dashboard &amp; analytics</h3>
+    <p>A real-time administrative dashboard showed participant numbers, course preferences, and volunteer activity — filterable and exportable, giving organizers a clearer view of total footfall and relative course interest than spreadsheets alone could. Charts were built using TypeScript-compatible data visualization libraries such as Recharts and Chart.js.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">Live-event challenge</div>
+    <h2>The same failure Socio hit — found independently</h2>
+    <p>On day one, within approximately the first two hours of the live event, the application struggled to retrieve a specific participant record from a list of around 1,500 records. We traced it to loading the large list without pagination.</p>
+    <p>We implemented pagination at <strong>50 records per page</strong> and deployed the fix that afternoon — while the event was still running. After the change, the application operated reliably for the rest of the event.</p>
+    <p class="muted" style="font-style:italic">A practical lesson in designing and testing for production conditions, rather than assuming a system that works in development will perform equally well under live operational load. Participant-data quality and early connectivity issues were separate challenges handled the same way — on the day, under pressure.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">Reported outcomes</div>
+    <h2>Faster, and more visible to organizers</h2>
+    <ul>
+      <li><strong>Faster entry:</strong> processing fell from an estimated 5–10 minutes in the previous manual workflow (based on my own volunteer experience) to under one minute, observed during the event.</li>
+      <li><strong>Smoother peak flow:</strong> multiple volunteers scanning on available devices — no observed queues during busy periods.</li>
+      <li><strong>Better traceability:</strong> participant-to-volunteer mappings and timestamped activity made review straightforward.</li>
+      <li><strong>Accessible analytics:</strong> organizers viewed footfall and course-interest data through dashboards rather than spreadsheet analysis alone.</li>
+      <li><strong>Stakeholder feedback:</strong> the IT department, university management, and the Pro Vice Chancellor gave verbal appreciation; participants and parents responded positively to the digital process.</li>
+      <li><strong>Potential reuse:</strong> the university indicated the system would be used for a future DAKSH / Open Day — proposed, not yet confirmed as having happened.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <div class="tag">What I'd improve next</div>
+    <h2>Beyond a free-tier pilot</h2>
+    <ul>
+      <li>Move beyond a free-tier student deployment and test against larger datasets and higher traffic.</li>
+      <li>Design a controlled offline/fallback check-in process for connectivity failures.</li>
+      <li>Deepen course-demand and visitor-behaviour analytics.</li>
+      <li>Strengthen registration validation earlier, to reduce inconsistent records before event day.</li>
+    </ul>
+    <p class="muted">The project demonstrated the real difference between building in a development environment and operating during a live event — data quality, connectivity, retrieval performance, and time-sensitive failures all show up only under real operational conditions.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">Current status</div>
+    <h2>Deployment and ownership</h2>
+    <p>The application remains under the developers' deployment and has not yet been used for another event. The university has indicated intent to use it for a future DAKSH / Open Day; the deployment is currently associated with the developers rather than handed over to university IT.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">Explore Gated</div>
+    <div class="linkrow">
+      <a href="https://gated.withsocio.com/" target="_blank" rel="noopener">Live deployment ↗</a>
+      <a href="index.html#case">← All case studies</a>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

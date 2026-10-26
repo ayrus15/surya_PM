@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Auth — Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<script>if('scrollRestoration' in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
+</head>
+<body>
+
+<header class="top"><div class="wrap top-inner">
+  <a class="brand" href="index.html">SURYA VAMSHI S.</a>
+  <nav><a href="index.html#case">All case studies</a><a href="index.html#contact">Contact</a></nav>
+</div></header>
+
+<main class="wrap">
+  <a class="back" href="index.html">← Back to all work</a>
+
+  <section class="detail-hero cover" style="border-radius:20px;padding-inline:28px;border-bottom:none;margin-top:20px">
+    <span class="eyebrow mono" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Third case study</span>
+    <h1 style="font-size:clamp(30px,5vw,46px)">Auth — Admissions Workflow Management Platform</h1>
+    <p class="lede" style="font-size:17px;max-width:68ch;color:var(--muted)">QR-enabled candidate verification, checkpoint routing, and real-time admissions visibility for Christ University's interview-day operations.</p>
+    <div class="meta-row">
+      <span class="status-partial">Status: deployed &amp; functional — not adopted for live rollout that academic year</span>
+      <span>Stack: TypeScript · Node.js · Supabase · QR + messaging integrations</span>
+    </div>
+  </section>
+
+  <section class="block" style="border-top:none">
+    <div class="verify-list" style="border-color:var(--accent)">
+      <h4>Read this first</h4>
+      <p style="margin:0">Auth was built, deployed, and tested end-to-end using sample records and real academic-year applicant data, and demonstrated to the Admissions Cell. The university did not proceed with the intended live rollout that year because the dedicated QR-scanning devices and display infrastructure needed for a well-organized, high-throughput deployment couldn't be arranged in time. <strong>This was an operational-readiness constraint, not a claim that the application was nonfunctional.</strong></p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="tag">The problem</div>
+    <h2>A manual candidate journey, prone to risk</h2>
+    <p>Interview days involve many candidates moving through a sequence of locations and activities within assigned time slots. The existing process depended on volunteers manually checking application cards, verifying candidate details, directing people to the correct block or floor, and recording attendance on paper. That created several operational risks:</p>
+    <ul>
+      <li>Repeated manual verification at different points in the candidate journey.</li>
+      <li>Candidates needing to ask volunteers where to assemble, which floor to visit, or what came next.</li>
+      <li>Limited real-time visibility into how many candidates had reached each checkpoint.</li>
+      <li>Paper attendance sheets that could be incomplete when signatures were missed.</li>
+      <li>Manual coordination between admissions staff, volunteers, and interview panels.</li>
+      <li>Difficulty assigning a second faculty member as a co-panelist for interviews.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <div class="tag">Product goal</div>
+    <h2>A controlled candidate flow, not just faster scanning</h2>
+    <p>Create a QR-driven workflow that verifies each candidate, directs them to the next required location, records progression through the admissions journey, and gives the Admissions Cell a consolidated operational view. The intended outcome was a more controlled candidate flow with fewer manual handoffs and more reliable attendance records — not merely faster scanning.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">Candidate journey</div>
+    <h2>Five checkpoints, one consolidated view</h2>
+    <figure class="diagram-frame">
+      <svg viewBox="0 0 700 170" role="img" aria-label="Candidate journey: QR identity, campus entry, floor routing, written assessment, marks verification, interview panel">
+        <defs><marker id="arra" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--border)"/></marker></defs>
+        <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--fg)">
+          <rect x="10" y="55" width="105" height="55" rx="8" fill="none" stroke="var(--border)" stroke-width="1.25"/>
+          <text x="62" y="78" text-anchor="middle">QR identity</text>
+          <text x="62" y="92" text-anchor="middle" font-size="9" fill="var(--muted)">application scan</text>
+
+          <rect x="135" y="55" width="105" height="55" rx="8" fill="none" stroke="var(--border)" stroke-width="1.25"/>
+          <text x="187" y="78" text-anchor="middle">Campus</text>
+          <text x="187" y="92" text-anchor="middle" font-size="9" fill="var(--muted)">entry + welcome</text>
+
+          <rect x="260" y="55" width="105" height="55" rx="8" fill="var(--accent)" fill-opacity="0.12" stroke="var(--accent)" stroke-width="2"/>
+          <text x="312" y="78" text-anchor="middle">Floor</text>
+          <text x="312" y="92" text-anchor="middle" font-size="9" fill="var(--muted)">routing + SMS</text>
+
+          <rect x="385" y="55" width="110" height="55" rx="8" fill="none" stroke="var(--border)" stroke-width="1.25"/>
+          <text x="440" y="78" text-anchor="middle">Written</text>
+          <text x="440" y="92" text-anchor="middle" font-size="9" fill="var(--muted)">assessment entry</text>
+
+          <rect x="515" y="55" width="110" height="55" rx="8" fill="none" stroke="var(--border)" stroke-width="1.25"/>
+          <text x="570" y="78" text-anchor="middle">Marks</text>
+          <text x="570" y="92" text-anchor="middle" font-size="9" fill="var(--muted)">verification</text>
+
+          <rect x="645" y="55" width="50" height="55" rx="8" fill="none" stroke="var(--border)" stroke-width="1.25" opacity="0.5"/>
+          <text x="670" y="86" text-anchor="middle" font-size="9">Panel</text>
+
+          <line x1="115" y1="82" x2="133" y2="82" stroke="var(--border)" stroke-width="1.25" marker-end="url(#arra)"/>
+          <line x1="240" y1="82" x2="258" y2="82" stroke="var(--border)" stroke-width="1.25" marker-end="url(#arra)"/>
+          <line x1="365" y1="82" x2="383" y2="82" stroke="var(--border)" stroke-width="1.25" marker-end="url(#arra)"/>
+          <line x1="495" y1="82" x2="513" y2="82" stroke="var(--border)" stroke-width="1.25" marker-end="url(#arra)"/>
+          <line x1="625" y1="82" x2="643" y2="82" stroke="var(--border)" stroke-width="1.25" marker-end="url(#arra)"/>
+        </g>
+      </svg>
+      <figcaption>Every scan feeds the Admissions Cell's consolidated operational dashboard</figcaption>
+    </figure>
+
+    <div class="journey">
+      <div class="step"><div class="num">1</div><div><h4>Application &amp; QR identity</h4><p>Candidate application information loaded in bulk from existing records (CSV/Excel). A QR code on the application card is the scan point for lookup and verification.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h4>Campus entry</h4><p>The QR scan verifies the candidate against the record and can trigger a welcome message with assembly instructions.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h4>Block / floor routing</h4><p>A scan shows course, floor, and room details on a connected display; SMS/WhatsApp can also direct the candidate to the next location.</p></div></div>
+      <div class="step"><div class="num">4</div><div><h4>Written assessment entry</h4><p>A further scan records entry into the assessment stage, giving visibility into how many candidates from a batch have reached that point.</p></div></div>
+      <div class="step"><div class="num">5</div><div><h4>Marks verification</h4><p>A checkpoint in the candidate's progression; marks verification itself is carried out by the Admissions Cell, not by the application — the scan only records that the candidate has reached this stage.</p></div></div>
+      <div class="step"><div class="num">6</div><div><h4>Interview panel</h4><p>Records candidate attendance/completion, reducing dependence on a paper signature sheet that could be missed.</p></div></div>
+    </div>
+
+    <h3>Additional workflow: faculty co-panel assignment</h3>
+    <p>Interview panels consisted of two faculty members. Assigning a second faculty member as co-panelist was a separate coordination problem in the existing process — the application included a selection and assignment workflow to make that step easier to manage.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">My contribution</div>
+    <h2>Discovery, workflow definition, and selected components</h2>
+    <p>I drew on my own experience with admissions operations and volunteer-led candidate handling, then spoke with the Admissions Cell to understand the process and its pain points.</p>
+    <ul>
+      <li>Mapped the end-to-end candidate journey and identified where QR checkpoints could improve verification and routing.</li>
+      <li>Translated admissions-team requirements into a multi-stage workflow.</li>
+      <li>Contributed to SMS and WhatsApp communication integration for next-step instructions.</li>
+      <li>Designed the faculty co-panel selection and assignment logic.</li>
+      <li>Helped structure bulk-imported applicant data; incomplete records required cleaning before use.</li>
+      <li>Participated in end-to-end testing and demonstrations with the Admissions Cell.</li>
+    </ul>
+    <p class="muted" style="font-style:italic">The application was developed collaboratively — this describes my contribution without claiming sole ownership of every component.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">Validation &amp; readiness</div>
+    <h2>Tested end-to-end, demonstrated, then shelved for hardware — not product — reasons</h2>
+    <ul>
+      <li>Verified application behavior with sample records and the academic-year applicant data provided.</li>
+      <li>Ran end-to-end test scenarios across the intended workflow.</li>
+      <li>Demonstrated the application to the Admissions Cell.</li>
+      <li>Kept the application deployed and accessible after the intended rollout window; it currently holds the previous academic year's applicant data and would need refreshed data for a new cycle.</li>
+    </ul>
+    <p>The application was developed late in the planning timeline, leaving insufficient time to arrange the dedicated QR scanners and multiple display screens the event needed. The university preferred a highly organized, reliable setup over a partial rollout on ordinary phones or laptops at every checkpoint — which could technically work, but risked recreating the exact queues and congestion the system was built to solve.</p>
+    <p class="muted" style="font-style:italic">The system was intended to support admissions at institutional scale — the university had more than 16,000 applicants in the broader admissions operation, but the available evidence does not establish that the application processed all of those applicants in a live production cycle.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">Limitations &amp; future improvements</div>
+    <h2>What's next, if revived</h2>
+    <ul>
+      <li>Explicit handling for slot changes, multiple applications by the same candidate, and candidates arriving outside their assigned time (identified as future-development areas, not implemented features).</li>
+      <li>Validate mandatory fields and applicant records before import, to reduce manual data cleaning.</li>
+      <li>Design a staged hardware plan early — device procurement, display placement, connectivity, event-day support.</li>
+      <li>A controlled fallback mode for connectivity or scanner failure, with reconciliation once service returns.</li>
+      <li>Measure checkpoint wait times and batch throughput so operational teams can adjust staffing and release timing.</li>
+      <li>Refresh applicant data and revalidate course/slot/routing rules before any future admissions cycle.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <div class="tag">Key learning</div>
+    <h2>A functional application is only one part of an operational product</h2>
+    <p>For a high-volume, time-sensitive university process, rollout readiness depends as much on hardware availability, stakeholder alignment, data quality, exception handling, and a realistic implementation timeline as on the software itself. The project reinforced planning the technical deployment and the physical operating environment as one integrated system — not sequentially.</p>
+  </section>
+
+  <section class="block">
+    <div class="tag">Explore Auth</div>
+    <div class="linkrow">
+      <a href="https://universityauth.vercel.app/" target="_blank" rel="noopener">Live deployment ↗</a>
+      <a href="index.html#case">← All case studies</a>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
